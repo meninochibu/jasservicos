@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR" style="scroll-behavior: smooth;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JASERVIÇOS, LDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<style>
+  @keyframes slow-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-slow-spin {
+    animation: slow-spin 10s linear infinite;
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+  .animate-sway {
+    animation: sway 4s ease-in-out infinite;
+    transform-origin: 50% 80%;
+  }
+
+  @keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  .animate-flash {
+    animation: flash 2s ease-in-out infinite;
+  }
+  
+  /* Splash screen animation */
+  @keyframes splash-pop-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) rotate(-15deg);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.05) rotate(5deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  .animate-splash-pop-in {
+    animation: splash-pop-in 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  /* Footer credit animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      color: #fde047; /* yellow-300 */
+      text-shadow: 0 0 4px rgba(250, 204, 21, 0.3);
+    }
+    50% {
+      color: #bef264; /* lime-300 */
+      text-shadow: 0 0 8px rgba(132, 204, 22, 0.5);
+    }
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
