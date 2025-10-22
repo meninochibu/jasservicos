@@ -83,51 +83,9 @@ const servicesData: Service[] = [
   {
     icon: <CleaningIcon />,
     title: 'Serviços de Limpeza',
-    description: 'Soluções completas de limpeza profissional para diversos ambientes. Oferecemos:',
-    cleaningServices: [
-      'Limpeza Residencial - Casas e apartamentos com produtos ecológicos',
-      'Limpeza Comercial - Escritórios, lojas e estabelecimentos comerciais',
-      'Limpeza Pós-Obra - Remoção completa de resíduos de construção',
-      'Limpeza de Estofados - Higienização profunda com técnica a vapor',
-      'Limpeza de Tapetes - Lavagem profissional com eliminação de ácaros',
-      'Limpeza de Vidros - Cristalina para janelas e fachadas em altura'
-    ]
+    description: 'Limpeza residencial, comercial, pós-obra, estofados, tapetes e vidros. Soluções completas para ambientes impecáveis.',
   },
 ];
-
-// Componente personalizado para o card de serviços de limpeza
-const CleaningServiceCard: React.FC<{ service: Service; isVisible: boolean; index: number }> = ({ 
-  service, 
-  isVisible, 
-  index 
-}) => {
-  return (
-    <div 
-      className={`bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800 transform hover:-translate-y-2 transition-all ease-out duration-500 flex flex-col items-center text-center ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
-      <div className="text-yellow-400 mb-4">
-        {service.icon}
-      </div>
-      <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
-      <p className="text-gray-400 mb-4">{service.description}</p>
-      
-      {/* Lista de serviços de limpeza específicos */}
-      <div className="w-full text-left">
-        <ul className="text-gray-400 space-y-2">
-          {service.cleaningServices?.map((cleaningService, idx) => (
-            <li key={idx} className="flex items-start">
-              <span className="text-yellow-400 mr-2">•</span>
-              <span className="text-sm">{cleaningService}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
 
 const Services: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -178,28 +136,9 @@ const Services: React.FC = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesData.map((service, index) => {
-            // Renderiza o card especial para serviços de limpeza
-            if (service.title === 'Serviços de Limpeza') {
-              return (
-                <CleaningServiceCard 
-                  key={index} 
-                  service={service} 
-                  isVisible={isVisible} 
-                  index={index} 
-                />
-              );
-            }
-            // Renderiza cards normais para outros serviços
-            return (
-              <ServiceCard 
-                key={index} 
-                service={service} 
-                isVisible={isVisible} 
-                index={index} 
-              />
-            );
-          })}
+          {servicesData.map((service, index) => (
+            <ServiceCard key={index} service={service} isVisible={isVisible} index={index} />
+          ))}
         </div>
       </div>
     </section>
